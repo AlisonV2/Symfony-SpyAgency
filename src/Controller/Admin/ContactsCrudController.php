@@ -32,11 +32,22 @@ class ContactsCrudController extends AbstractCrudController
             DateField::new('Birthday'),
             TextField::new('Alias'),
             ChoiceField::new('Country') ->setChoices([
+                'Russia' =>'Russia',
                 'France' => 'France',
-                'Belgium' => 'Belgium',
-                'Spain' => 'Spain',
-                'Italy' => 'Italy'
-            ]), 
+                'Ukraine' => 'Ukraine',
+                'Italy' => 'Italy',
+                'Spain' =>'Spain',
+                'Sweden' => 'Sweden',
+                'Norway' => 'Norway',
+                'Germany' => 'Germany',
+                'Belgium' =>'Belgium',
+                'Greece' => 'Greece',
+                'Portugal' => 'Portugal',
+                'Ireland' => 'Ireland',
+                'Austria' => 'Austria',
+                'Croatia' => 'Croatia',
+                'Albania' => 'Albania',
+            ]),
         ];
     }
 }

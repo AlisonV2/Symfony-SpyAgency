@@ -2,13 +2,17 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Agents;
+use App\Entity\Targets;
+use App\Entity\Contacts;
 use App\Entity\Missions;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use App\Entity\Safeplaces;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class MissionsCrudController extends AbstractCrudController
 {
@@ -25,7 +29,12 @@ class MissionsCrudController extends AbstractCrudController
     }
 
     public function configureFields(string $pageName): iterable
-    {
+    {   
+
+        $contactsAlias = $this->getDoctrine()->getRepository(Contacts::class)->findAll();
+        $targetsAlias = $this->getDoctrine()->getRepository(Targets::class)->findAll();
+        $agentsIdCode = $this->getDoctrine()->getRepository(Agents::class)->getIdCode();
+        $safeplacesIdCode = $this->getDoctrine()->getRepository(Safeplaces::class)->findAll();
 
         return [
             TextField::new('Title'),
@@ -62,14 +71,13 @@ class MissionsCrudController extends AbstractCrudController
                 'Extraction' => 'Extraction', 
                 'Torture' => 'Torture',
                 'Blackmail' => 'Blackmail'
-
             ]),
             DateField::new('startDate', 'Start date'),
             DateField::new('endDate', 'End date'),
-            TextField::new('Contacts', 'Contact'),
-            TextField::new('Targets', 'Target'),
-            TextField::new('Agents', 'Agent'),
-            TextField::new('Safeplaces', 'Safeplace')
+            ChoiceField::new('Contacts', 'Contact')->setChoices($contactsAlias),
+            ChoiceField::new('Targets', 'Target')->setChoices($targetsAlias),
+            ChoiceField::new('Agents', 'Agent')->setChoices($agentsIdCode),
+            ChoiceField::new('Safeplaces', 'Safeplace')->setChoices($safeplacesIdCode),
         ];
     }
 }

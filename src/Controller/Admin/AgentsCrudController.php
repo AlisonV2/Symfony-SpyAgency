@@ -34,12 +34,23 @@ class AgentsCrudController extends AbstractCrudController
             DateField::new('Birthday'),
             NumberField::new('Id_code'),
             ChoiceField::new('Country') ->setChoices([
+                'Russia' =>'Russia',
                 'France' => 'France',
-                'Belgium' => 'Belgium',
-                'Spain' => 'Spain',
-                'Italy' => 'Italy'
-            ]), 
-            ChoiceField::new('Speciality') ->setChoices([
+                'Ukraine' => 'Ukraine',
+                'Italy' => 'Italy',
+                'Spain' =>'Spain',
+                'Sweden' => 'Sweden',
+                'Norway' => 'Norway',
+                'Germany' => 'Germany',
+                'Belgium' =>'Belgium',
+                'Greece' => 'Greece',
+                'Portugal' => 'Portugal',
+                'Ireland' => 'Ireland',
+                'Austria' => 'Austria',
+                'Croatia' => 'Croatia',
+                'Albania' => 'Albania',
+            ]),
+            ChoiceField::new('Speciality') -> allowMultipleChoices() ->setChoices([
                 'Extraction' =>'Extraction',
                 'Spying' => 'Spying',
                 'Information' => 'Information',

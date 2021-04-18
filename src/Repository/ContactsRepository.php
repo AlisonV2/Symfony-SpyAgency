@@ -19,22 +19,19 @@ class ContactsRepository extends ServiceEntityRepository
         parent::__construct($registry, Contacts::class);
     }
 
-    // /**
-    //  * @return Contacts[] Returns an array of Contacts objects
-    //  */
-    /*
-    public function findByExampleField($value)
+/**
+* @return Contacts[] Returns an array of Contacts objects
+*/
+
+    public function findByAlias($alias)
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.alias = :alias')
+            ->setParameter('alias', $alias)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Contacts

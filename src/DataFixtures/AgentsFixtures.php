@@ -20,7 +20,7 @@ class AgentsFixtures extends Fixture
             $agent->setName($faker->lastName);
             $agent->setFirstName($faker->firstName);
             $agent->setBirthday($faker->dateTimeBetween($startDate = '-50 years', $endDate = '-25 years', $timezone = null));
-            $agent->setIdCode($faker->unique->ean8);
+            $agent->setIdCode($faker->unique->randomNumber($nbDigits = 8, $strict = false));
             $agent->setCountry($faker->randomElement($countries));
             $agent->setSpeciality($faker->randomElement($specialities));
 

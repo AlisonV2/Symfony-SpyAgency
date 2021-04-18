@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap');
+
+html, body {
+    height: 100%;
+    font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
+}
+
+a, a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+/* Navbar */
+.navbar {
+  width: 100vw;
+  height: 4rem;
+  border-bottom: 2px solid #efefef;
+}
+
+.navbar .nav-link {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.navbar-toggler {
+  margin-left: 0 auto;
+  margin-right: 3rem;
+}
+
+.fa-sign-in-alt {
+padding-left: 0.7em;
+} 
+
+/* Footer */
+
+#copyright {
+    position: absolute;
+    bottom: 0;
+    height: 3rem;
+    margin-top: 2rem;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 2px solid #efefef;
+}
+
+/*Login Form*/
+
+h3 {   
+  text-align: center;
+} 
+
+label {
+  padding-bottom: 1rem;
+}
+
+form {
+  width: 30%;
+  margin: 0 auto;
+  border: 2px solid #efefef;
+  border-radius: 20px;
+  padding: 2em;
+  margin-top: 8rem;
+}
+
+.form-control {
+  margin-bottom: 2rem;
+  font-size: 14px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  line-height: 1.7rem;
+}
+
+.button {
+  text-align:center;
+}
+
+.btn {
+  color: black;
+  background: #efefef;
+}
+
+.btn:hover {
+  color: white;
+  background: #838383;
+}
+
+/*Home table*/
+
+#hometable {
+  width: 60%;
+  text-align: center;
+  background: #efefef;
+  border-radius: 20px;
+  margin-top: 5rem;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 3rem;
+}

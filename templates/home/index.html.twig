@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+   <!-- Navbar start -->
+    <nav class="navbar navbar-expand">
+        <div class="container-fluid">
+            <h1 class="navbar-brand">SpyAgency</h1>
+            <ul class="navbar-nav">
+                <li class="nav-item px-3"><a href="{{ path('app_login') }}">Log in<i class="fas fa-sign-in-alt"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Navbar end -->
+
+    <!-- Home table start -->
+    <section id="home">
+      <h2>Missions</h2> 
+      <div class="container-fluid" id="hometable">
+        <table class="table">
+          <thead>
+              <tr>
+                  <th>Title</th>
+                  <th>Alias</th>
+                  <th>Status</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for mission in missions %}
+                <tr>
+                  <td>{{ mission.title }}</td>
+                  <td>{{ mission.alias }}</td>
+                  <td>{{ mission.status }}</td>
+                  <td><a data-toggle="modal" data-target="#modal" href="">See more</a></td>
+                </tr>
+            </tbody>
+        </table>
+      <!-- Modal table start --> 
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{ mission.title }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+              <div class="modal-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Alias: {{ mission.alias }}</th>
+                      <th></th>
+                      <th>Status: {{ mission.status }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Country : {{ mission.country }}</td>
+                      <td>Start: {{ mission.startDate |date("d/m/Y") }}</td>
+                      <td>End: {{ mission.endDate |date("d/m/Y") }}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3">Description : {{ mission.description }}</td>
+                    </tr>
+                    <tr>
+                      <td>Agent : {{ mission.agents.idCode }}</td>
+                      <td>Contact: {{ mission.contacts.alias}}</td>
+                      <td>Target: {{ mission.targets.alias }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    <!-- Modal end -->
+    </section>
+    <!-- Home table end -->
+
+{% endblock %}

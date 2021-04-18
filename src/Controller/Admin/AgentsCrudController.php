@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Targets;
+use App\Entity\Agents;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
@@ -11,11 +11,12 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 
-class TargetsCrudController extends AbstractCrudController
+
+class AgentsCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Targets::class;
+        return Agents::class;
     }
 
     public function configureCrud(Crud $crud): Crud
@@ -31,13 +32,20 @@ class TargetsCrudController extends AbstractCrudController
             TextField::new('Name'),
             TextField::new('Firstname'),
             DateField::new('Birthday'),
-            TextField::new('Alias'),
+            NumberField::new('Id_code'),
             ChoiceField::new('Country') ->setChoices([
                 'France' => 'France',
                 'Belgium' => 'Belgium',
                 'Spain' => 'Spain',
                 'Italy' => 'Italy'
             ]), 
+            ChoiceField::new('Speciality') ->setChoices([
+                'Extraction' =>'Extraction',
+                'Spying' => 'Spying',
+                'Information' => 'Information',
+                'Blackmail' => 'Blackmail',
+                'Killing' => 'Killing',
+            ]),
         ];
     }
 }

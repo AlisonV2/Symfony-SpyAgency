@@ -7,6 +7,7 @@ use App\Entity\Targets;
 use App\Entity\Contacts;
 use App\Entity\Missions;
 use App\Entity\Safeplaces;
+use App\Repository\ContactsRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -19,6 +20,11 @@ class MissionsCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Missions::class;
+        return Missions::class;
+        return Contacts::class;
+        return Agents::class;
+        return Targets::class;
+        return Safeplaces::class;
     }
 
     public function configureCrud(Crud $crud): Crud
@@ -30,11 +36,7 @@ class MissionsCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {   
-
-        $contactsAlias = $this->getDoctrine()->getRepository(Contacts::class)->findAll();
-        $targetsAlias = $this->getDoctrine()->getRepository(Targets::class)->findAll();
-        $agentsIdCode = $this->getDoctrine()->getRepository(Agents::class)->getIdCode();
-        $safeplacesIdCode = $this->getDoctrine()->getRepository(Safeplaces::class)->findAll();
+        
 
         return [
             TextField::new('Title'),
@@ -74,10 +76,6 @@ class MissionsCrudController extends AbstractCrudController
             ]),
             DateField::new('startDate', 'Start date'),
             DateField::new('endDate', 'End date'),
-            ChoiceField::new('Contacts', 'Contact')->setChoices($contactsAlias),
-            ChoiceField::new('Targets', 'Target')->setChoices($targetsAlias),
-            ChoiceField::new('Agents', 'Agent')->setChoices($agentsIdCode),
-            ChoiceField::new('Safeplaces', 'Safeplace')->setChoices($safeplacesIdCode),
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Agents;
+use App\Entity\Targets;
 use App\Entity\Contacts;
 use App\Entity\Missions;
 use App\Entity\Safeplaces;
@@ -13,6 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class MissionsType extends AbstractType
@@ -87,6 +89,7 @@ class MissionsType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'idCode',
             ])
+            ->add('submit', SubmitType::class)
         ;
     }
 

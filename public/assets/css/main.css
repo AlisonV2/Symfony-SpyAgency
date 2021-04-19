@@ -53,7 +53,7 @@ label {
   padding-bottom: 1rem;
 }
 
-form {
+#login {
   width: 30%;
   margin: 0 auto;
   border: 2px solid #efefef;

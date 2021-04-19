@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Missions
 {
     /**
-     * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
@@ -31,6 +30,7 @@ class Missions
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @ORM\Id
      */
     private $alias;
 

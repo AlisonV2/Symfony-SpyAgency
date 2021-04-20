@@ -82,6 +82,10 @@ class MissionsCrudController extends AbstractCrudController
             ]),
             DateField::new('startDate', 'Start date'),
             DateField::new('endDate', 'End date'),
+            AssociationField::new('agents', 'Agents'),
+            AssociationField::new('contacts', 'Contacts'),
+            AssociationField::new('targets', 'Targets'),
+            AssociationField::new('safeplaces', 'Safeplaces')
         ];
     }
 }

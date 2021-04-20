@@ -59,6 +59,11 @@ class Agents
         $this->missions = new ArrayCollection();
     }
 
+    public function __toString(): string {
+
+        return (string) $this->getIdCode().' '.'('.$this->getCountry().')';
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -135,6 +140,8 @@ class Agents
 
         return $this;
     }
+
+
 
     /**
      * @return Collection|Missions[]

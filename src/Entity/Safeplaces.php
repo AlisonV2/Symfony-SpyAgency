@@ -49,6 +49,11 @@ class Safeplaces
         $this->missions = new ArrayCollection();
     }
 
+    public function __toString(): string {
+
+        return (string) $this->getIdCode().' '.'('.$this->getCountry().')';
+    }
+
     public function getId(): ?int
     {
         return $this->id;

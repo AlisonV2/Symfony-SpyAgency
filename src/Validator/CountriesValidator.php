@@ -2,14 +2,22 @@
 
 namespace App\Validator;
 
+use App\Repository\MissionsRepository;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-class MissionsValidator extends ConstraintValidator
+class CountriesValidator extends ConstraintValidator
 {
+    private $missionsRepository;
+    
+    public function __construct(MissionsRepository $missionsRepository)
+    {
+        $this->missionsRepository = $missionsRepository;
+    }
+    
     public function validate($value, Constraint $constraint)
     {
-        /* @var $constraint \App\Validator\Missions */
+        /* @var $constraint \App\Validator\Countries */
 
         if (null === $value || '' === $value) {
             return;
@@ -17,7 +25,7 @@ class MissionsValidator extends ConstraintValidator
 
         // TODO: implement the validation here
         $this->context->buildViolation($constraint->message)
-            ->setParameter('{{ value }}', $value)
+            //->setParameter('{{ value }}', $value)
             ->addViolation();
     }
 }

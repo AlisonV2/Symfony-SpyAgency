@@ -19,6 +19,9 @@ class CountriesValidator extends ConstraintValidator
     {
         /* @var $constraint \App\Validator\Countries */
 
+        $missionsCountry = $this->missionsRepository->getCountry();
+        $agentsCountry = $this->agentsRepository->getCountry();
+
         if (null === $value || '' === $value) {
             return;
         }

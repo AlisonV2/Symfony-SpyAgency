@@ -23,11 +23,11 @@ class ContactsRepository extends ServiceEntityRepository
 * @return Contacts[] Returns an array of Contacts objects
 */
 
-    public function findByAlias($alias)
+    public function findByCountry($country)
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.alias = :alias')
-            ->setParameter('alias', $alias)
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.country = :country')
+            ->setParameter('country', $country)
             ->getQuery()
             ->getResult()
         ;

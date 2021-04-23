@@ -29,33 +29,32 @@ class AgentsCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('Name'),
-            TextField::new('Firstname'),
-            DateField::new('Birthday'),
-            NumberField::new('Id_code'),
-            ChoiceField::new('Country') ->setChoices([
-                'Russia' =>'Russia',
-                'France' => 'France',
-                'Ukraine' => 'Ukraine',
-                'Italy' => 'Italy',
-                'Spain' =>'Spain',
-                'Sweden' => 'Sweden',
-                'Norway' => 'Norway',
-                'Germany' => 'Germany',
-                'Belgium' =>'Belgium',
-                'Greece' => 'Greece',
-                'Portugal' => 'Portugal',
-                'Ireland' => 'Ireland',
-                'Austria' => 'Austria',
-                'Croatia' => 'Croatia',
-                'Albania' => 'Albania',
+            TextField::new('Name')
+                ->setRequired(true),
+            TextField::new('Firstname')
+                ->setRequired(true),
+            DateField::new('Birthday')
+                ->setRequired(true),
+            NumberField::new('Id_code')
+                ->setRequired(true),
+            ChoiceField::new('Country')
+                ->setRequired(true) 
+                ->setChoices([
+                    'France' => 'France',
+                    'Italy' => 'Italy',
+                    'Spain' =>'Spain',
+                    'Germany' => 'Germany',
+                    'Belgium' =>'Belgium',
+                    'Portugal' => 'Portugal',
             ]),
-            ChoiceField::new('Speciality') -> allowMultipleChoices() ->setChoices([
-                'Extraction' =>'Extraction',
-                'Spying' => 'Spying',
-                'Information' => 'Information',
-                'Blackmail' => 'Blackmail',
-                'Killing' => 'Killing',
+            ChoiceField::new('Speciality')
+                ->setRequired(true) 
+                ->allowMultipleChoices() 
+                ->setChoices([
+                    'Information' => 'Information', 
+                    'Extraction' => 'Extraction', 
+                    'Torture' => 'Torture',
+                    'Blackmail' => 'Blackmail'
             ]),
         ];
     }

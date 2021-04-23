@@ -13,8 +13,8 @@ class SafeplacesFixtures extends Fixture
 public function load(ObjectManager $manager)
     {
         $safeplacesTypes = ['Appartment', 'City house', 'Country house', 'Hotel', 'Penthouse', 'Villa', 'Boat'];
-        $countries = ['Russia', 'France', 'Ukraine', 'Italy', 'Spain', 'Sweden', 'Norway', 'Germany', 'Belgium', 'Greece', 'Portugal', 'Ireland', 'Austria', 'Croatia', 'Albania'];
-
+        $countries = ['France', 'Italy', 'Spain', 'Portugal', 'Germany', 'Belgium'];
+                
         for ($i = 0; $i <= 100; $i++) {
             $safeplace = new Safeplaces();
             $faker = Factory::create();

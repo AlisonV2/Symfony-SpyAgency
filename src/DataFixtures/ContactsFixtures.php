@@ -12,8 +12,8 @@ class ContactsFixtures extends Fixture
  
  public function load(ObjectManager $manager)
     {
-        $countries = ['Russia', 'France', 'Ukraine', 'Italy', 'Spain', 'Sweden', 'Norway', 'Germany', 'Belgium', 'Greece', 'Portugal', 'Ireland', 'Austria', 'Croatia', 'Albania'];
-        
+        $countries = ['France', 'Italy', 'Spain', 'Portugal', 'Germany', 'Belgium'];
+                
         for ($i = 0; $i <= 100; $i++) {
             $contact = new Contacts();
             $faker = Factory::create();

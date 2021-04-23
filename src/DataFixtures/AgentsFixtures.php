@@ -11,8 +11,8 @@ class AgentsFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $specialities = ['Kill', 'Spy', 'Information', 'Extraction', 'Torture', 'Blackmail'];
-        $countries = ['Russia', 'France', 'Ukraine', 'Italy', 'Spain', 'Sweden', 'Norway', 'Germany', 'Belgium', 'Greece', 'Portugal', 'Ireland', 'Austria', 'Croatia', 'Albania'];
+        $specialities = ['Information', 'Extraction', 'Torture', 'Blackmail'];
+        $countries = ['France', 'Italy', 'Spain', 'Portugal', 'Germany', 'Belgium'];
         
         for ($i = 0; $i <= 50; $i++) {
             $agent = new Agents();

@@ -14,6 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Missions
 {
     /**
+     * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
@@ -31,7 +32,6 @@ class Missions
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @ORM\Id
      */
     private $alias;
 
@@ -91,6 +91,10 @@ class Missions
     public function __toString(): string {
 
         return $this->title;
+        return $this->agents;
+        return $this->targets;
+        return $this->contacts;
+        return $this->safeplaces;
     }
 
     public function getId(): ?int

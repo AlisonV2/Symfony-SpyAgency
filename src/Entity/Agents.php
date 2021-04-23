@@ -61,7 +61,7 @@ class Agents
 
     public function __toString(): string {
 
-        return (string) $this->getIdCode().' '.'('.$this->getCountry().')';
+        return (string) $this->getIdCode().' '.'('.$this->getCountry().' '.'|'.' '.$this->getSpeciality().')';
     }
 
     public function getId(): ?int

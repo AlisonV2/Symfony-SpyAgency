@@ -28,26 +28,23 @@ class TargetsCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('Name'),
-            TextField::new('Firstname'),
-            DateField::new('Birthday'),
-            TextField::new('Alias'),
-            ChoiceField::new('Country') ->setChoices([
-                'Russia' =>'Russia',
-                'France' => 'France',
-                'Ukraine' => 'Ukraine',
-                'Italy' => 'Italy',
-                'Spain' =>'Spain',
-                'Sweden' => 'Sweden',
-                'Norway' => 'Norway',
-                'Germany' => 'Germany',
-                'Belgium' =>'Belgium',
-                'Greece' => 'Greece',
-                'Portugal' => 'Portugal',
-                'Ireland' => 'Ireland',
-                'Austria' => 'Austria',
-                'Croatia' => 'Croatia',
-                'Albania' => 'Albania',
+            TextField::new('Name')
+                ->setRequired(true),
+            TextField::new('Firstname')
+                ->setRequired(true),
+            DateField::new('Birthday')
+                ->setRequired(true),
+            TextField::new('Alias')
+                ->setRequired(true),
+            ChoiceField::new('Country')
+                ->setRequired(true) 
+                ->setChoices([
+                    'France' => 'France',
+                    'Italy' => 'Italy',
+                    'Spain' =>'Spain',
+                    'Germany' => 'Germany',
+                    'Belgium' =>'Belgium',
+                    'Portugal' => 'Portugal',
             ]),
         ];
     }

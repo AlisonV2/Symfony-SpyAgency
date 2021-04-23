@@ -22,10 +22,10 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-            #$routeBuilder = $this->get(AdminUrlGenerator::class);
+            $routeBuilder = $this->get(AdminUrlGenerator::class);
     
-            #return $this->redirect($routeBuilder->setController(MissionsCrudController::class)->generateUrl());
-            return parent::index();
+            return $this->redirect($routeBuilder->setController(MissionsCrudController::class)->generateUrl());
+            #return parent::index();
     }
 
     public function configureDashboard(): Dashboard
@@ -36,7 +36,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
+        #yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Missions', 'fas fa-list', Missions::class);
         yield MenuItem::linkToCrud('Agents', 'fas fa-list', Agents::class);
         yield MenuItem::linkToCrud('Contacts', 'fas fa-list', Contacts::class);

@@ -7,19 +7,14 @@ use App\Entity\Targets;
 use App\Entity\Contacts;
 use App\Entity\Missions;
 use App\Entity\Safeplaces;
-use App\Form\MissionsType;
-use App\Repository\AgentsRepository;
-use App\Repository\ContactsRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 
 class MissionsCrudController extends AbstractCrudController
 {
@@ -45,47 +40,58 @@ class MissionsCrudController extends AbstractCrudController
         
 
         return [
-            TextField::new('Title'),
-            TextAreaField::new('Description'),
-            TextField::new('Alias'),
-            ChoiceField::new('Country') ->setChoices([
-                'Russia' =>'Russia',
-                'France' => 'France',
-                'Ukraine' => 'Ukraine',
-                'Italy' => 'Italy',
-                'Spain' =>'Spain',
-                'Sweden' => 'Sweden',
-                'Norway' => 'Norway',
-                'Germany' => 'Germany',
-                'Belgium' =>'Belgium',
-                'Greece' => 'Greece',
-                'Portugal' => 'Portugal',
-                'Ireland' => 'Ireland',
-                'Austria' => 'Austria',
-                'Croatia' => 'Croatia',
-                'Albania' => 'Albania',
-            ]),
+            IdField::new('id')
+                ->setMaxLength(5)
+                ->setRequired(true)
+                ->hideOnIndex(),
+            TextField::new('Title')
+                ->setRequired(true),
+            TextAreaField::new('Description')
+                ->setRequired(true),
+            TextField::new('Alias')
+                ->setRequired(true),
+            ChoiceField::new('Country') 
+                ->setChoices([
+                    'France' => 'France',
+                    'Italy' => 'Italy',
+                    'Spain' =>'Spain',
+                    'Germany' => 'Germany',
+                    'Belgium' =>'Belgium',
+                    'Portugal' => 'Portugal',
+            ]) 
+                ->setRequired(true),
 
-            ChoiceField::new('Status') ->setChoices([
-                'Planning' =>'Planning',
-                'In progress' => 'In progress',
-                'Completed' => 'Completed',
-                'Failed' => 'Failed'
-            ]),
-            ChoiceField::new('Speciality') ->setChoices([
-                'Kill' => 'Kill', 
-                'Spy'=> 'Spy', 
-                'Information' => 'Information', 
-                'Extraction' => 'Extraction', 
-                'Torture' => 'Torture',
-                'Blackmail' => 'Blackmail'
-            ]),
-            DateField::new('startDate', 'Start date'),
-            DateField::new('endDate', 'End date'),
-            AssociationField::new('agents', 'Agents'),
-            AssociationField::new('contacts', 'Contacts'),
-            AssociationField::new('targets', 'Targets'),
+            ChoiceField::new('Status') 
+                ->setChoices([
+                    'Planning' =>'Planning',
+                    'In progress' => 'In progress',
+                    'Completed' => 'Completed',
+                    'Failed' => 'Failed'
+            ])
+                ->setRequired(true),
+            ChoiceField::new('Speciality') 
+                ->setChoices([
+                    'Information' => 'Information', 
+                    'Extraction' => 'Extraction', 
+                    'Torture' => 'Torture',
+                    'Blackmail' => 'Blackmail'
+            ])
+                ->setRequired(true),
+            DateField::new('startDate', 'Start date')
+                ->setRequired(true),
+            DateField::new('endDate', 'End date')
+                ->setRequired(true),
+            AssociationField::new('agents', 'Agents')
+                ->setRequired(true)
+                ->setHelp('Please select an agent with the same speciality and from a different country than the mission\'s.'),
+            AssociationField::new('contacts', 'Contacts')
+                ->setRequired(true)
+                ->setHelp('Please select a contact from the same country as the mission\'s.'),
+            AssociationField::new('targets', 'Targets')
+                ->setRequired(true)
+                ->setHelp('Please select a target from the same country as the mission\'s.'),
             AssociationField::new('safeplaces', 'Safeplaces')
+                ->setHelp('Please select a safeplace from the same country as the mission\'s.')
         ];
     }
 }

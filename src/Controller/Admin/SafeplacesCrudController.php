@@ -21,30 +21,27 @@ class SafeplacesCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            NumberField::new('Id_code'),
-            TextareaField::new('Address'),
-            ChoiceField::new('Country') ->setChoices([
-                'Russia' =>'Russia',
-                'France' => 'France',
-                'Ukraine' => 'Ukraine',
-                'Italy' => 'Italy',
-                'Spain' =>'Spain',
-                'Sweden' => 'Sweden',
-                'Norway' => 'Norway',
-                'Germany' => 'Germany',
-                'Belgium' =>'Belgium',
-                'Greece' => 'Greece',
-                'Portugal' => 'Portugal',
-                'Ireland' => 'Ireland',
-                'Austria' => 'Austria',
-                'Croatia' => 'Croatia',
-                'Albania' => 'Albania',
+            NumberField::new('Id_code')
+                ->setRequired(true),
+            TextareaField::new('Address')
+                ->setRequired(true),
+            ChoiceField::new('Country')
+                ->setRequired(true) 
+                ->setChoices([
+                    'France' => 'France',
+                    'Italy' => 'Italy',
+                    'Spain' =>'Spain',
+                    'Germany' => 'Germany',
+                    'Belgium' =>'Belgium',
+                    'Portugal' => 'Portugal',
             ]),
-            ChoiceField::new('Type') ->setChoices([
-                'Appartment' =>'Appartment',
-                'City house' => 'City house',
-                'Country house' => 'Country house',
-                'Hotel' => 'Hotel'
+            ChoiceField::new('Type')
+                ->setRequired(true) 
+                ->setChoices([
+                    'Appartment' =>'Appartment',
+                    'City house' => 'City house',
+                    'Country house' => 'Country house',
+                    'Hotel' => 'Hotel'
             ]),
         ];
     }

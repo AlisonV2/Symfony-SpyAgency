@@ -1,25 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap');
+@font-face {
+  font-family: 'Segoe UI Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Segoe UI Regular'), url('Segoe UI.woff') format('woff');
+  }
+
+  @font-face {
+  font-family: 'Segoe UI Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Segoe UI Bold'), url('Segoe UI Bold.woff') format('woff');
+  }
 
 html, body {
     height: 100%;
-    font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
+    font-family: "Segoe UI Regular", Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family : 'Segoe UI Bold';
 }
 
 a, a:hover {
   text-decoration: none;
-  color: black;
+  color:#6174D1;
 }
 
 /* Navbar */
+
+.navbar-brand {
+  color: #6174D1;
+  font-size: 1.5rem;
+}
 .navbar {
   width: 100vw;
   height: 4rem;
   border-bottom: 2px solid #efefef;
 }
 
-.navbar .nav-link {
+.navbar .nav-item {
   text-decoration: none;
   font-size: 20px;
+  font-weight: bold;
 }
 
 .navbar-toggler {
@@ -28,13 +50,14 @@ a, a:hover {
 }
 
 .fa-sign-in-alt {
-padding-left: 0.7em;
+  padding-left: 0.7em;
+  color: #6174D1;
 } 
 
 /* Footer */
 
 #copyright {
-    position: absolute;
+    position: relative;
     bottom: 0;
     height: 3rem;
     margin-top: 2rem;
@@ -60,6 +83,7 @@ form {
   border-radius: 20px;
   padding: 2em;
   margin-top: 8rem;
+  text-align: center;
 }
 
 .form-control {
@@ -86,15 +110,33 @@ form {
 
 /*Home table*/
 
-#hometable {
-  width: 60%;
+main {
+  width: 90%;
+  margin-left: 0 auto;
+  height: 80vh;
+}
+
+.table-striped {
+  width: 90%;
   text-align: center;
-  background: #efefef;
-  border-radius: 20px;
   margin-top: 5rem;
+  line-height: 3rem;
+}
+
+#table {
+  display: flex;
+  justify-content: center;
+}
+
+#action {
+  padding-right: 2rem;
 }
 
 h2 {
-  text-align: center;
   margin-top: 3rem;
+  text-align: center;
+}
+
+td, th {
+  padding-left: 2rem;
 }

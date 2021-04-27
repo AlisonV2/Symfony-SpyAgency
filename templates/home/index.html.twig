@@ -15,45 +15,39 @@
     </nav>
     <!-- Navbar end -->
 
-<div id="home">
-    <h1>Missions index</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Alias</th>
-                <th>Status</th>
-                <th>Start</th>
-                <th>End</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for mission in missions %}
-            <tr>
-                <td>{{ mission.title }}</td>
-                <td>{{ mission.description }}</td>
-                <td>{{ mission.alias }}</td>
-                <td>{{ mission.status }}</td>
-                <td>{{ mission.startDate ? mission.startDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ mission.endDate ? mission.endDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('home_show', {'id': mission.id}) }}"><i class="far fa-eye"></i></a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="14">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
-<footer>
-    <div class="container-fluid" id="copyright">
-        <p>&copy; 2021 | Alison Vandromme</p>
+<main>
+    <h2>Missions index</h2>
+    <div class="container-fluid" id="table">
+        <table class="table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Alias</th>
+                    <th>Status</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th id="action">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for mission in missions %}
+                <tr>
+                    <td>{{ mission.title }}</td>
+                    <td>{{ mission.alias }}</td>
+                    <td>{{ mission.status }}</td>
+                    <td>{{ mission.startDate ? mission.startDate|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ mission.endDate ? mission.endDate|date('Y-m-d H:i:s') : '' }}</td>
+                    <td id="action">
+                        <a href="{{ path('home_show', {'id': mission.id}) }}"><i class="far fa-eye"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="14">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
-</footer>
-
+</main>
 {% endblock %}

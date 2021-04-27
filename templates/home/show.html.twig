@@ -15,81 +15,76 @@
     </nav>
     <!-- Navbar end -->
 
-    <h1>Missions</h1>
-
-<div id="content">
-    <a href="{{ path('home_index') }}">Back to list</a>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ mission.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ mission.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ mission.description }}</td>
-            </tr>
-            <tr>
-                <th>Alias</th>
-                <td>{{ mission.alias }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ mission.status }}</td>
-            </tr>
-            <tr>
-                <th>Country</th>
-                <td>{{ mission.country }}</td>
-            </tr>
-            <tr>
-                <th>Start</th>
-                <td>{{ mission.startDate ? mission.startDate|date('d-m-Y') : '' }}</td>
-            </tr>
-            <tr>
-                <th>End</th>
-                <td>{{ mission.endDate ? mission.endDate|date('d-m-Y') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Speciality</th>
-                <td>{{ mission.speciality }}</td>
-            </tr>
+<main>
+    <h2>Missions</h2>
+    <div class="container-fluid" id="table">
+        <a href="{{ path('home_index') }}">Back to list</a>
+        <table class="table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ mission.id }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ mission.title }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ mission.description }}</td>
+                </tr>
+                <tr>
+                    <th>Alias</th>
+                    <td>{{ mission.alias }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ mission.status }}</td>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <td>{{ mission.country }}</td>
+                </tr>
+                <tr>
+                    <th>Start</th>
+                    <td>{{ mission.startDate ? mission.startDate|date('d-m-Y') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>End</th>
+                    <td>{{ mission.endDate ? mission.endDate|date('d-m-Y') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Speciality</th>
+                    <td>{{ mission.speciality }}</td>
+                </tr>
             
-            <tr>
-                <th>Agents</th>
-                {% for agents in mission.agents %}
-                <td>{{ agents.idCode }}</td>
-                {% endfor %}
-            </tr>
-            <tr>
-                <th>Contacts</th>
-                {% for contacts in mission.contacts %}
-                <td>{{ contacts.alias }}</td>
-                {% endfor %}
-            </tr>
-            <tr>
-                <th>Targets</th>
-                {% for targets in mission.targets %}
-                <td>{{ targets.alias }}</td>
-                {% endfor %}
-            </tr>
-            <tr>
-                <th>Safeplaces</th>
-                {% for safeplaces in mission.safeplaces %}
-                <td>{{ safeplaces.idCode }}</td>
-                {% endfor %}
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-    <footer>
-    <div class="container-fluid" id="copyright">
-        <p>&copy; 2021 | Alison Vandromme</p>
+                <tr>
+                    <th>Agents</th>
+                    {% for agents in mission.agents %}
+                    <td>{{ agents.idCode }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th>Contacts</th>
+                    {% for contacts in mission.contacts %}
+                    <td>{{ contacts.alias }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th>Targets</th>
+                    {% for targets in mission.targets %}
+                    <td>{{ targets.alias }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th>Safeplaces</th>
+                    {% for safeplaces in mission.safeplaces %}
+                    <td>{{ safeplaces.idCode }}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
     </div>
-</footer>
+</main>
 
 {% endblock %}

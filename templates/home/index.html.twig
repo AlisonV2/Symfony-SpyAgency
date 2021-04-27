@@ -35,8 +35,8 @@
                     <td>{{ mission.title }}</td>
                     <td>{{ mission.alias }}</td>
                     <td>{{ mission.status }}</td>
-                    <td>{{ mission.startDate ? mission.startDate|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>{{ mission.endDate ? mission.endDate|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ mission.startDate ? mission.startDate|date('d-m-Y') : '' }}</td>
+                    <td>{{ mission.endDate ? mission.endDate|date('d-m-Y') : '' }}</td>
                     <td id="action">
                         <a href="{{ path('home_show', {'id': mission.id}) }}"><i class="far fa-eye"></i></a>
                     </td>

@@ -14,7 +14,7 @@ class ContactsFixtures extends Fixture
     {
         $countries = ['France', 'Italy', 'Spain', 'Portugal', 'Germany', 'Belgium'];
                 
-        for ($i = 0; $i <= 100; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             $contact = new Contacts();
             $faker = Factory::create();
             $contact->setName($faker->lastName);

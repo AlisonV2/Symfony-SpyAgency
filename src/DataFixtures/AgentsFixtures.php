@@ -14,7 +14,7 @@ class AgentsFixtures extends Fixture
         $specialities = ['Information', 'Extraction', 'Torture', 'Blackmail'];
         $countries = ['France', 'Italy', 'Spain', 'Portugal', 'Germany', 'Belgium'];
         
-        for ($i = 0; $i <= 50; $i++) {
+        for ($i = 0; $i <=50; $i++) {
             $agent = new Agents();
             $faker = Factory::create();
             $agent->setName($faker->lastName);

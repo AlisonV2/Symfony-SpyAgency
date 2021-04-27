@@ -99,13 +99,16 @@ form {
 }
 
 .btn {
-  color: black;
-  background: #efefef;
+  color: white;
+  background: #6174D1;
+  border-color: #6174D1;
+  font-size: 18px;
 }
 
 .btn:hover {
   color: white;
   background: #838383;
+  border-color: #838383
 }
 
 /*Home table*/
@@ -139,4 +142,27 @@ h2 {
 
 td, th {
   padding-left: 2rem;
+}
+
+/*Landing*/
+
+#landing {
+  height: 80vh;
+  padding-top: 5rem;
+  text-align: center;
+}
+
+#welcome {
+  margin-bottom: 5rem;
+}
+
+.landing {
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  font-family : 'Segoe UI Bold';
+}
+
+.questions {
+  font-size: 2rem;
+  font-family : 'Segoe UI Bold';
 }

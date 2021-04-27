@@ -40,10 +40,6 @@ class MissionsCrudController extends AbstractCrudController
         
 
         return [
-            IdField::new('id')
-                ->setMaxLength(5)
-                ->setRequired(true)
-                ->hideOnIndex(),
             TextField::new('Title')
                 ->setRequired(true),
             TextAreaField::new('Description')

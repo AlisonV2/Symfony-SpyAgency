@@ -15,7 +15,7 @@ public function load(ObjectManager $manager)
         $safeplacesTypes = ['Appartment', 'City house', 'Country house', 'Hotel', 'Penthouse', 'Villa', 'Boat'];
         $countries = ['France', 'Italy', 'Spain', 'Portugal', 'Germany', 'Belgium'];
                 
-        for ($i = 0; $i <= 100; $i++) {
+        for ($i = 0; $i <= 50; $i++) {
             $safeplace = new Safeplaces();
             $faker = Factory::create();
             $safeplace->setIdCode($faker->unique->isbn13);

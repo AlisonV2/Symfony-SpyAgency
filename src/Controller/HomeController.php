@@ -4,21 +4,26 @@ namespace App\Controller;
 
 use App\Entity\Missions;
 use App\Repository\MissionsRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[Route('/')]
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'home')]
-    public function index()
+    #[Route('/', name: 'home_index', methods: ['GET'])]
+    public function index(MissionsRepository $missionsRepository): Response
     {
-        $missions = $this->getDoctrine()
-                         ->getRepository(Missions::class)
-                         ->findAll();
-
         return $this->render('home/index.html.twig', [
-            'missions' => $missions,
+            'missions' => $missionsRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/{id}', name: 'home_show', methods: ['GET'])]
+    public function show(Missions $mission): Response
+    {
+        return $this->render('home/show.html.twig', [
+            'mission' => $mission,
         ]);
     }
 }

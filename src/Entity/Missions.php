@@ -90,11 +90,7 @@ class Missions
 
     public function __toString(): string {
 
-        return $this->title;
-        return $this->agents;
-        return $this->targets;
-        return $this->contacts;
-        return $this->safeplaces;
+        return $this->mission;
     }
 
     public function getId(): ?int

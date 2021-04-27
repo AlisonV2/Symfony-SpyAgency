@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Missions{% endblock %}
 
 {% block body %}
+
    <!-- Navbar start -->
     <nav class="navbar navbar-expand">
         <div class="container-fluid">
@@ -14,75 +15,45 @@
     </nav>
     <!-- Navbar end -->
 
-    <!-- Home table start -->
-    <section id="home">
-      <h2>Missions</h2> 
-      <div class="container-fluid" id="hometable">
-        <table class="table">
-          <thead>
-              <tr>
-                  <th>Title</th>
-                  <th>Alias</th>
-                  <th>Status</th>
-                  <th></th>
-              </tr>
-          </thead>
-          <tbody>
-            {% for mission in missions %}
-                <tr>
-                  <td>{{ mission.title }}</td>
-                  <td>{{ mission.alias }}</td>
-                  <td>{{ mission.status }}</td>
-                  <td><a data-toggle="modal" data-target="#modal" href="">See more</a></td>
-                </tr>
-            </tbody>
-        </table>
-      <!-- Modal table start --> 
-        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">{{ mission.title }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-              <div class="modal-body">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Alias: {{ mission.alias }}</th>
-                      <th></th>
-                      <th>Status: {{ mission.status }}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Country : {{ mission.country }}</td>
-                      <td>Start: {{ mission.startDate |date("d/m/Y") }}</td>
-                      <td>End: {{ mission.endDate |date("d/m/Y") }}</td>
-                    </tr>
-                    <tr>
-                      <td colspan="3">Description : {{ mission.description }}</td>
-                    </tr>
-                    <tr>
-                      <td>Agent : {{ mission.agents }}</td>
-                      <td>Contact: {{ mission.contacts}}</td>
-                      <td>Target: {{ mission.targets }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    <!-- Modal end -->
-    </section>
-    <!-- Home table end -->
+<div id="home">
+    <h1>Missions index</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Alias</th>
+                <th>Status</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mission in missions %}
+            <tr>
+                <td>{{ mission.title }}</td>
+                <td>{{ mission.description }}</td>
+                <td>{{ mission.alias }}</td>
+                <td>{{ mission.status }}</td>
+                <td>{{ mission.startDate ? mission.startDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mission.endDate ? mission.endDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('home_show', {'id': mission.id}) }}"><i class="far fa-eye"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<footer>
+    <div class="container-fluid" id="copyright">
+        <p>&copy; 2021 | Alison Vandromme</p>
+    </div>
+</footer>
 
 {% endblock %}
